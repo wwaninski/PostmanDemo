@@ -37,7 +37,8 @@ Każde zapytanie zawiera testy automatyczne, sprawdzające odpowiedzi API. Przyk
 - Kod odpowiedzi 200 dla GET /users
 - Struktura odpowiedzi JSON dla GET /users/{{user_id}}
 - Prawidłowe utworzenie użytkownika dla POST /users
+
 Aby uruchomić testy:
 - Przejdź do Collection Runner.
-- Wybierz kolekcję ReqRes Regression Tests.
+- Wybierz kolekcję RegressionTests.
 - Kliknij Run Tests i sprawdź wyniki.
