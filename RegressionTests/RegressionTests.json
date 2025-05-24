@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "8d23701d-45ba-45b1-ab74-a61ac1a29ca3",
+		"name": "RegressionTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "CheckUserResponseCode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b5a83f7-91c9-46b1-a273-127f2c70d3bc",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "a555278f-ab64-4b68-b948-1d78234521e4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/users/4"
+					},
+					"response": []
+				},
+				{
+					"name": "ValidateUserDataStructure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef227170-7c5f-49ca-bef9-388f6e3355a5",
+								"exec": [
+									"pm.test(\"Response contains expected fields\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData.data).to.have.property(\"email\");\r",
+									"    pm.expect(jsonData.data).to.have.property(\"first_name\");\r",
+									"    pm.expect(jsonData.data).to.have.property(\"last_name\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "0d0a85b0-a68d-4503-be4f-288b2587da6b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/users/4"
+					},
+					"response": []
+				},
+				{
+					"name": "VerifyUserCreation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c8cc217a-5919-4b9d-8693-fa4932aab429",
+								"exec": [
+									"pm.test(\"User creation was successful\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData).to.have.property(\"createdAt\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "ee9ed79c-f6bd-4ad2-b472-06606b4d41f1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jan Kowalski\",\r\n  \"job\": \"Developer\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/users"
+					},
+					"response": []
+				}
+			],
+			"id": "e43fa97e-b289-4e38-a7e4-933eeb171d24"
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": {
+			"value": "reqres-free-v1",
+			"key": "x-api-key"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6e12d258-9c41-4faf-87e8-81f3960bddfc",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b200adba-1d40-4fb1-898b-82c6bdbb28b3",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
