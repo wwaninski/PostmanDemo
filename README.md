@@ -38,7 +38,3 @@ Każde zapytanie zawiera testy automatyczne, sprawdzające odpowiedzi API. Przyk
 - Struktura odpowiedzi JSON dla GET /users/{{user_id}}
 - Prawidłowe utworzenie użytkownika dla POST /users
 
-Aby uruchomić testy:
-- Przejdź do Collection Runner.
-- Wybierz kolekcję RegressionTests.
-- Kliknij Run Tests i sprawdź wyniki.
