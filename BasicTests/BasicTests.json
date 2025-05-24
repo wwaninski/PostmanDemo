@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "79c65fe5-35a8-4ea0-9d4f-e1cba131659a",
+		"name": "BasicTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GetUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "82d9e190-c269-4b5a-9892-ffae78c74150",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains 'data'\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"data\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "fefc6a67-ebc0-412f-9fde-4c365685586c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users?page=2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserByID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0327d8a8-52ea-411e-b0e3-d4ccb14a6056",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains 'data'\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"data\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "1be5f79b-e802-47c7-91e7-4a6984d1d79e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/users/{{user_id}}"
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "894a5723-21a1-4453-85e2-fb849fe686ae",
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"user_id\", jsonData.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains 'data'\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"data\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "4b0d1559-00fe-490e-84be-39e793f73bb9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jan Kowalski\",\r\n  \"job\": \"Developer\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/users"
+					},
+					"response": []
+				}
+			],
+			"id": "505ef6a7-896f-47c9-a30f-927e353e7961"
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": {
+			"value": "reqres-free-v1",
+			"key": "x-api-key"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6f4c3b4b-5977-4f30-a710-d10c83521115",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b8d229f0-4397-4767-b9d6-9cdad38e816e",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
